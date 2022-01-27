@@ -20,7 +20,6 @@ function sketch() {
   createGrid(size);
 
   let etch = document.getElementById("container");
-  console.log(etch);
   etch.addEventListener("mouseover", function(e) {
     e.target.style.backgroundColor = "#505050";
   });
