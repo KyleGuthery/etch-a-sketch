@@ -15,14 +15,18 @@ function createGrid(size) {
 }
 
 function sketch() {
-  let size = window.prompt("How big do you want your Etch-a-Sketch?");
-  
-  createGrid(size);
+  let size = window.prompt("How big do you want your Etch-a-Sketch? (Pick a grid size between 10-150)");
+  if (size <= 150 && size >= 10) {
+    createGrid(size);
 
-  let etch = document.getElementById("container");
-  etch.addEventListener("mouseover", function(e) {
-    e.target.style.backgroundColor = "#505050";
-  });
+    let etch = document.getElementById("container");
+    etch.addEventListener("mouseover", function(e) {
+      e.target.style.backgroundColor = "#505050";
+    });
+  } else {
+    alert("Size must be between 10 and 150.")
+    location.reload();
+  }
 }
 
 sketch();
