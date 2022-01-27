@@ -1,3 +1,28 @@
+/*
+Red: #d7092a
+bg: #d2d2d2
+line: #505050
+*/
+
+* {
+  margin: 0;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+#etch {
+  width: 66%;
+  margin: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .row {
   visibility: hidden;
   display: flex;
@@ -5,9 +30,9 @@
 
 .pixel {
   visibility: visible;
-  border: 1px solid green;
-  height: 10px;
-  width: 10px;
+  background-color: #d2d2d2;
+  height: 5px;
+  width: 5px;
 }
 
 .pixel:hover {

@@ -1,13 +1,11 @@
 const container = document.querySelector("#container");
 
-console.log(container);
-
-function createGrid() {
-  for (let i = 0; i < 16; i++) {
+function createGrid(size) {
+  for (let i = 0; i < size; i++) {
     let row = document.createElement('div');
     row.className = 'row';
 
-    for(let j = 0; j < 16; j++) {
+    for(let j = 0; j < size; j++) {
       let cell = document.createElement('div');
       cell.className = 'pixel';
       row.appendChild(cell);
@@ -16,6 +14,16 @@ function createGrid() {
   }
 }
 
-createGrid();
+function sketch() {
+  let size = window.prompt("How big do you want your Etch-a-Sketch?");
+  
+  createGrid(size);
 
-console.log(container);
+  let etch = document.getElementById("container");
+  console.log(etch);
+  etch.addEventListener("mouseover", function(e) {
+    e.target.style.backgroundColor = "#505050";
+  });
+}
+
+sketch();
