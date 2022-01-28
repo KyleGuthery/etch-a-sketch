@@ -4,7 +4,7 @@ const shake = document.getElementById("shake");
 
 function createGrid(size, WIDTH) {
   for (let i = 0; i < size; i++) {
-    let row = document.createElement('div');
+    const row = document.createElement('div');
     row.className = 'row';
 
     for(let j = 0; j < size; j++) {
