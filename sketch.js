@@ -1,6 +1,8 @@
-const container = document.querySelector("#container");
+const container = document.getElementById("container");
+const reset = document.getElementById("reset");
+const shake = document.getElementById("shake");
 
-function createGrid(size) {
+function createGrid(size, WIDTH) {
   for (let i = 0; i < size; i++) {
     let row = document.createElement('div');
     row.className = 'row';
@@ -8,25 +10,57 @@ function createGrid(size) {
     for(let j = 0; j < size; j++) {
       let cell = document.createElement('div');
       cell.className = 'pixel';
+      cell.style.width = `${WIDTH}px`;
+      cell.style.height = `${WIDTH}px`;
       row.appendChild(cell);
     }
     container.appendChild(row);
   }
+
 }
 
 function sketch() {
-  let size = window.prompt("How big do you want your Etch-a-Sketch? (Pick a grid size between 10-150)");
-  if (size <= 150 && size >= 10) {
-    createGrid(size);
+  const size = window.prompt("How big do you want your Etch-a-Sketch? (Pick a grid size between 10-100)");
 
-    let etch = document.getElementById("container");
-    etch.addEventListener("mouseover", function(e) {
+  shake.value = size
+  if (size <= 100 && size >= 10) {
+    pixelSize(size);
+
+    const etch = document.getElementById("container");
+    etch.addEventListener("mouseover", (e) => {
       e.target.style.backgroundColor = "#505050";
     });
   } else {
-    alert("Size must be between 10 and 150.")
+    alert("Size must be between 10 and 100.")
     location.reload();
   }
 }
 
+function pixelSize(size) {
+  const SKETCH = 500;
+  const WIDTH = SKETCH/size;
+
+  createGrid(size, WIDTH);
+}
+
+function shaker() {
+  const pixels = document.getElementsByClassName("pixel");
+
+  while(pixels.length > 0){
+    pixels[0].parentNode.removeChild(pixels[0]);
+  }  
+
+  container.classList.add("apply-shake");
+
+  container.addEventListener("animationend", (e) => {
+    container.classList.remove("apply-shake");
+  })
+
+  pixelSize(shake.value);
+}
+
 sketch();
+
+reset.addEventListener("click", (e) => {location.reload();})
+
+shake.addEventListener("click", (e) => {shaker();})
