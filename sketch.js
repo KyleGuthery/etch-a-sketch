@@ -37,10 +37,10 @@ function sketch() {
 }
 
 function pixelSize(size) {
-  const SKETCH = 500;
-  const WIDTH = SKETCH/size;
+  const sketch = 500;
+  const width = sketch/size;
 
-  createGrid(size, WIDTH);
+  createGrid(size, width);
 }
 
 function shaker() {
